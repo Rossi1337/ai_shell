@@ -62,7 +62,7 @@ Future<void> updateConfig(String setting) async {
   if (parts.length != 2) {
     fail('Invalid configuration format. Use key=value format.');
   }
-  final key = parts[0].trim();
+  final key = parts[0].trim().toUpperCase();
   final value = parts[1].trim();
 
   final configFile = getConfigFile();
