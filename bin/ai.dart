@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:http/http.dart' as http;
 
-// TODO: append the console output history
+// TODO append the console output history
 // For this read the history file from the shell
 //and append it to the system prompt
 // Make sure to exclude the ai responses from the history
@@ -36,7 +36,7 @@ Future<void> main(List<String> args) async {
     await updateConfig(commands.option('config') ?? '');
   } else {
     final model = commands.option('model') ?? '';
-    final prompt = commands.rest.join();
+    final prompt = commands.rest.join(' ');
     await invokeOllama(model, prompt);
   }
   exit(0);
@@ -222,6 +222,7 @@ String detectShell() {
 
 /// Prints an error message and exits the program with the specified exit code.
 void fail(String message, [int exitCode = 1]) {
-  print('Error: $message\n</ai>');
+  stderr.writeln('Error: $message');
+  print('</ai>'); // Print the closing tag for the AI response
   exit(exitCode);
 }
