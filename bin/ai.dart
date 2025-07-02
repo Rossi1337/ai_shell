@@ -31,7 +31,7 @@ Future<void> main(List<String> args) async {
   var commands = parser.parse(args);
 
   if (commands.flag('help')) {
-    printUsage(parser);
+    await printUsage(parser);
   } else if (commands.option('config') != null) {
     await updateConfig(commands.option('config') ?? '');
   } else {
@@ -174,8 +174,7 @@ String getApiBase(Map<String, String> config) {
 ///
 String getModel(String model, Map<String, String> config) {
   if (model.isEmpty) {
-    model =
-        config['OLLAMA_MODEL'] ?? Platform.environment['OLLAMA_MODEL'] ?? '';
+    model = getModelFromConfig(config);
   }
   if (model.isEmpty) {
     fail(
@@ -185,11 +184,25 @@ String getModel(String model, Map<String, String> config) {
   return model;
 }
 
+/// Gets the model from the configuration or environment variables.
+///
+String getModelFromConfig(Map<String, String> config) =>
+    config['OLLAMA_MODEL'] ?? Platform.environment['OLLAMA_MODEL'] ?? '';
+
 /// Prints the usage information for the CLI tool.
 ///
-void printUsage(ArgParser parser) {
+Future<void> printUsage(ArgParser parser) async {
   print('Usage: ai [options] <prompt>');
   print(parser.usage);
+  // Print the currently configured model
+  final config = await readConfig(getConfigFile());
+
+  final model = getModelFromConfig(config);
+  if (model.isNotEmpty) {
+    print('Current model: $model');
+  } else {
+    print('Current model: (not configured)');
+  }
 }
 
 /// Detects the current shell environment.
