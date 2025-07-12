@@ -7,7 +7,7 @@ When you invoke it with a prompt, your question is sent to Ollama, and the AI's 
 **Context sent to Ollama includes:**
 - The current operating system you use
 - The current shell you are running in
-- The shell's last full history (see [Activating Shell History](#activating-shell-history) below)
+- The content of the clipboard if you specify the --clip option
 
 ---
 
@@ -76,42 +76,6 @@ You can also set the model at runtime using the `--model` option:
 
 ```shell
 ai --model llama3 "Your prompt here"
-```
-
----
-
-## Activating Shell History
-
-**Work in progress** This feature is currently not working. 
-
-To provide the AI with access to your console output, you need to persist your shell history. **Warning:** This may include sensitive information such as passwords. Clean up these files when no longer needed.
-
-### Windows PowerShell
-
-Start logging all console output:
-
-```shell
-Start-Transcript
-```
-
-Stop logging:
-
-```shell
-Stop-Transcript
-```
-
-### Linux Shells
-
-To capture shell output, use the `script` command from the [bsdutils](https://manpages.debian.org/bullseye/bsdutils/script.1.en.html) package:
-
-```shell
-script output_log.txt
-```
-
-Alternatively, use `tee` to store all output to a file:
-
-```shell
-bash | tee output_log.txt
 ```
 
 ---
