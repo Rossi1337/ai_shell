@@ -2,3 +2,7 @@
 # Created by `dart pub`
 .dart_tool/
 bin/*.exe
+
+# FVM Version Cache
+.fvm/
+.vscode/settings.json
