@@ -22,10 +22,9 @@ ai How can I switch to my home directory?
 A typical response might look like:
 
 ```shell
-<ai>You can switch to your home directory by using the `cd ~` command.
+✨ You can switch to your home directory by using the `cd ~` command.
 
 Command proposal: `cd ~`
-</ai>
 ```
 
 ---
@@ -69,14 +68,26 @@ OLLAMA_MODEL = <modelname>
 or by setting the `OLLAMA_MODEL` environment variable:
 
 ```shell
-export OLLAMA_MODEL=llama3
+export OLLAMA_MODEL=gemma3:4b
 ```
 
 You can also set the model at runtime using the `--model` option:
 
 ```shell
-ai --model llama3 "Your prompt here"
+ai --model gemma3:4b "Your prompt here"
 ```
+
+### Other Settings
+You can also specify a prefix and suffix for the generated text. This is currently used to color the output of the AI. To do so specify in the config file: `OUTPUT_START` and `OUTPUT_END`
+
+For example:
+```shell
+OUTPUT_START=\x1B[32m✨ 
+OUTPUT_END=\x1B[0m
+```
+
+### Changing the system prompt
+To set your own system prompt you can do so by setting in the config file `SYSTEM_PROMPT`
 
 ---
 

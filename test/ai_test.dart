@@ -64,14 +64,12 @@ void main() {
   group('getModel', () {
     /// Tests for getting the model from configuration or arguments
     test('returns model from argument if provided', () {
-      final config = {'OLLAMA_MODEL': 'test-model'};
-      expect(getModel('arg-model', config), equals('arg-model'));
+      expect(getModel('arg-model'), equals('arg-model'));
     });
 
     /// Tests for getting the model from configuration if argument is empty
     test('returns model from config if argument is empty', () {
-      final config = {'OLLAMA_MODEL': 'test-model'};
-      expect(getModel('', config), equals('test-model'));
+      expect(getModel(''), equals('test-model'));
     });
   });
 }
