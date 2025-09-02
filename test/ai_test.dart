@@ -1,6 +1,7 @@
 import 'dart:io';
+import 'package:ai/src/config.dart';
+import 'package:ai/src/ollama.dart';
 import 'package:test/test.dart';
-import '../bin/ai.dart';
 
 void main() {
   /// Tests for the AI CLI tool

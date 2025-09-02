@@ -1,9 +1,9 @@
 name: ai
 description: A AI terminal helper for developers.
-version: 0.2.0
+version: 0.3.0
 
 environment:
-  sdk: ^3.7.2
+  sdk: '>=3.0.0 <4.0.0'
 
 # Add regular dependencies here.
 dependencies:
@@ -12,5 +12,5 @@ dependencies:
   path: ^1.8.0
 
 dev_dependencies:
-  lints: ^5.0.0
+  lints: ^6.0.0
   test: ^1.24.0

@@ -77,6 +77,10 @@ You can also set the model at runtime using the `--model` option:
 ai --model gemma3:4b "Your prompt here"
 ```
 
+Which model should I use?`This depends on your hardware but in general I get good answers by using small models like gemma3:4b or the small phi models. They produce quick responses which are most of of the time good enough. I do not recommend to use a reasoning model as they take longer to process your input with only 
+little improvements. If you have better hardware you can try bigger models but often their output is way to 
+verbose so it will not give you always a overall better experience.
+
 ### Other Settings
 You can also specify a prefix and suffix for the generated text. This is currently used to color the output of the AI. To do so specify in the config file: `OUTPUT_START` and `OUTPUT_END`
 
@@ -102,6 +106,8 @@ To build the executable, run:
 ```shell
 dart compile exe bin/ai.dart
 ```
+This will give you an `bin/ai.exe`
+on Linux you may want to rename that one.
 
 ---
 
